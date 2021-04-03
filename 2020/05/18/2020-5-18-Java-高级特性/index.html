@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="王达">
+  <meta name="keywords" content="">
+  
+  <title> Java的高级特性  - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"wangdayouyou.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>说一不二</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title=" Java的高级特性 ">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-05-18 00:00" pubdate>
+        2020年5月18日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"> Java的高级特性 </h1>
+            
+            <div class="markdown-body">
+              <p>泛型</p>
+<p>泛型就是将类型明确的工作推迟到推迟到具体场景下的使用时，才会去明确的特殊类型。泛型只存在与编译器，在运行期，会对泛型进行类型擦除。所谓类型擦除-就是<br>T会被Object类代替，但它会带来一些问题。如下的一段代码：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-keyword">String</span>[] args) &#123;<br>    List objectList=<span class="hljs-keyword">new</span> ArrayList();<br>    List&lt;Integer&gt; integerList=<span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>    List&lt;<span class="hljs-keyword">String</span>&gt; stringList=<span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>    <span class="hljs-keyword">try</span> &#123;<br>        objectList.getClass().getMethod(<span class="hljs-string">&quot;add&quot;</span>, <span class="hljs-keyword">Object</span>.class).invoke(objectList,<span class="hljs-number">1</span>);<br>        integerList.getClass().getMethod(<span class="hljs-string">&quot;add&quot;</span>, <span class="hljs-keyword">Object</span>.class).invoke(integerList,<span class="hljs-number">1</span>);<br>        stringList.getClass().getMethod(<span class="hljs-string">&quot;add&quot;</span>, <span class="hljs-keyword">Object</span>.class).invoke(stringList,<span class="hljs-number">1</span>);<br>    &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;<br><br>    &#125;<span class="hljs-keyword">finally</span> &#123;<br>        System.out.<span class="hljs-built_in">println</span>(objectList.<span class="hljs-built_in">size</span>());<br>        System.out.<span class="hljs-built_in">println</span>(integerList.<span class="hljs-built_in">size</span>());<br>        System.out.<span class="hljs-built_in">println</span>(stringList.<span class="hljs-built_in">size</span>());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>最终在终端上打印出的结果会显示三个一，即全部插入成功。之所以会出现这样的现象，说明确实进行了类型擦除，并且在获取时进行了强制类型转换。</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ArrayList</span>&lt;<span class="hljs-title">E</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractList</span>&lt;<span class="hljs-title">E</span>&gt;</span><br><span class="hljs-class">        <span class="hljs-keyword">implements</span> <span class="hljs-title">List</span>&lt;<span class="hljs-title">E</span>&gt;, <span class="hljs-title">RandomAccess</span>, <span class="hljs-title">Cloneable</span>, <span class="hljs-title">java</span>.<span class="hljs-title">io</span>.<span class="hljs-title">Serializable</span></span>&#123;       <br>    <span class="hljs-comment">// 第一个关键点    </span><br>    <span class="hljs-comment">// 还没开始就出问题的存储类型</span><br>    <span class="hljs-comment">// 难道不应该也是一个泛型E？</span><br>    transient Object[] elementData;<br><br>    <span class="hljs-keyword">public</span> E get(<span class="hljs-built_in">int</span> <span class="hljs-keyword">index</span>) &#123;<br>        rangeCheck(<span class="hljs-keyword">index</span>);<br><br>        <span class="hljs-keyword">return</span> elementData(<span class="hljs-keyword">index</span>); <span class="hljs-comment">// 1----&gt;</span><br>    &#125;<br><br>    <span class="hljs-comment">// 由1直接调用的函数</span><br>    <span class="hljs-comment">// 第二个关键点，强制转化得来的数据</span><br>    E elementData(<span class="hljs-built_in">int</span> <span class="hljs-keyword">index</span>) &#123;<br>        <span class="hljs-keyword">return</span> (E) elementData[<span class="hljs-keyword">index</span>];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上述代码可以看出类型擦除和强转的进行过程。由此可见，我们可能会在不知情的情况下在泛型T类中插入不是T类的数据，解决方法就是加上限定，即使用<br>&#60;T extends parent&#62;或者&#60;T super child&#62;的语句，在类型上加上这样的限定之后，编译器就能知道不会直接用Object去代替。</p>
+<p>反射</p>
+<p>初学Java时，根本就没有意识到Class类。初识反射时，根本就不知道为什么Java要有反射这种用法，更不用说真正去使用它了。因为反射给人的感觉是破坏了Java<br>的三大特性之一-封装。我们可以从Oracle对Reflection的描述文档中一窥究竟-</p>
+<blockquote>
+<p>Reflection is commonly used by programs which require the ability to examine or modify the runtime behavior of<br>applications running in the Java virtual machine. This is a relatively advanced feature and should be used only by<br>developers who have a strong grasp of the fundamentals of the language. With that caveat in mind, reflection is a<br>powerful technique and can enable applications to perform operations which would otherwise be impossible.</p>
+</blockquote>
+<p>由此可见，Oracle开放了这样的一个后门来帮助程序员实现一些原本不可能的任务，这样的一个机制为程序设计提供了强大的灵活性，很多第三方框架就是基于反射的<br>设计来为我们的应用提供帮助的。</p>
+<p>任何一个类都是Class类的实例对象，有三种方式去表示这个实例对象：</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">Class c1=<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Main</span>.</span></span><span class="hljs-keyword">class</span>;<br>Class c2=main.get<span class="hljs-constructor">Class()</span>;<br>Class c3=<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Class</span>.</span></span><span class="hljs-keyword">for</span><span class="hljs-constructor">Name(<span class="hljs-string">&quot;com.company.Main&quot;</span>)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>这里还要引入一个概念：静态加载类和动态加载类的区别，静态加载类即是在编译期间由编译器验证和加载的类，像我们平常new一个对象即是静态加载的一种方式。<br>动态加载即是在运行期加载的类。以上的三种方式第一种和第二种属于静态加载，第三种则属于动态加载。</p>
+<p>还有一点需要注意的是基本类型和void也是存在类类型的。</p>
+<p>至于反射的原理还留待进一步研究。。。</p>
+<p>注解（Annotation）</p>
+<p>关于注解，我的关注点主要是在它的使用和怎么去编写一个注解上。什么是注解？先来看一段官方的解释：</p>
+<blockquote>
+<p>从JDK5开始，java增加了对元数据（描述数据属性的信息）的支持。其实说白就是代码里的特殊标志，这些标志可以在编译，类加载，运行时被读取，<br>并执行相应的处理，以便于其他工具补充信息或者进行部署。</p>
+</blockquote>
+<p>仅仅两句话，但是信息量巨大，这里的元数据也是我一直模糊的概念，有必要单开一个主题。</p>
+<p>之前在知乎上看了一篇关于注解的比喻，那篇文章的作者将它比作标签，我本来想是不是应该用自我标签更好一点，后来转念一想，开发者就是程序世界的上帝，我们<br>使用注解，我们赋予代码生命，所以将注解比喻成标签是没有问题的。</p>
+<p>注解其实和类以及接口是处于同等地位的，我们可以来看一下下面这张图：<img src="/img/in-post/post-annotation-1.PNG" srcset="/img/loading.gif" lazyload alt="注解的地位"></p>
+<p>像下方这样，我们就完成了一个注解的定义：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> @<span class="hljs-keyword">interface</span> <span class="hljs-symbol">AnnoTest</span> &#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>注解可以作用在类上或者作用在方法上。一个注解它应该是怎么工作的呢，要想使一个注解工作，就不得不提元注解的概念。</p>
+<p>元注解</p>
+<p>元注解即是注解的注解，Java5提供了五种元注解：@Retention、@Documented、@Target、@Inherited、@Repeatable</p>
+<p>@Retention表示了一个注解的生存周期，它有三个取值，分别为RetentionPolicy.SOURCE、RetentionPolicy.CLASS、RetentionPolicy.RUNTIME。<br>分别值在源码中，编译中，运行中有效。</p>
+<p>@Documented能将注解中的元素包含到JavaDoc文档中去。</p>
+<p>@Target限定了注解的使用场景，有以下的一些值：</p>
+<ul>
+<li>ElementType.ANNOTATION_TYPE 可以给一个注解进行注解</li>
+<li>ElementType.CONSTRUCTOR 可以给构造方法进行注解</li>
+<li>ElementType.FIELD 可以给属性进行注解</li>
+<li>ElementType.LOCAL_VARIABLE 可以给局部变量进行注解</li>
+<li>ElementType.METHOD 可以给方法进行注解</li>
+<li>ElementType.PACKAGE 可以给一个包进行注解</li>
+<li>ElementType.PARAMETER 可以给一个方法内的参数进行注解</li>
+<li>ElementType.TYPE 可以给一个类型进行注解，比如类、接口、枚举</li>
+</ul>
+<p>@Inherited指的是被修饰的注解使用在了一个超类上，只要它的子类没有被其他注解修饰，该子类就继承了超类的该注解。</p>
+<p>@Repeatable是可重复的意思，即一个注解可以在一个地方应用多次。</p>
+<p>注解的属性</p>
+<p>注解的属性中只有成员变量，没有方法</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-variable">@Target</span>(ElementType.TYPE)<br><span class="hljs-variable">@Retention</span>(RetentionPolicy.RUNTIME)<br>public <span class="hljs-variable">@interface</span> AnnoTest &#123;<br>       <span class="hljs-selector-tag">String</span> <span class="hljs-selector-tag">comment</span>();<br>       <span class="hljs-selector-tag">int</span> <span class="hljs-selector-tag">id</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>如上代码，以无形参的方法名定义成员变量，前面的类型即为该成员变量的返回值。在使用注解时可以给成员变量赋值。注解的属性必须是基本类型以及String<br>类型以及它们的数组。可以用default关键字赋予属性一个默认值。</p>
+<p>值得注意的是，注解并不是代码的一部分，它对代码的运行结果没有直接影响，它是用来提供信息给编译器和APT（Annotation Processing Tool）用的。<br>更加具体的还有待研究，已知的信息是注解的提取要借助反射技术。</p>
+<p>动态代理</p>
+<p>TODO</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8F%8D%E5%B0%84%E3%80%81%E6%B3%A8%E8%A7%A3%E3%80%81%E6%B3%9B%E5%9E%8B%E3%80%81%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">反射、注解、泛型、动态代理</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/04/03/hello-world/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
