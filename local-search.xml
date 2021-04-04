@@ -17,13 +17,19 @@
   
   
   <entry>
-    <title>Hello World</title>
-    <link href="/2021/04/03/hello-world/"/>
-    <url>/2021/04/03/hello-world/</url>
+    <title>SpringCloud之基础组件</title>
+    <link href="/2021/04/03/SpringCloud%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/"/>
+    <url>/2021/04/03/SpringCloud%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<pre><code>完整的微服务包含许多基础设施，就目前来说，它至少应当包含①配置管理、②异步消息处理、③服务的发现和路由、④负载均衡、⑤断路器、⑥CI\CD管道、⑦集群管理、⑧安全模块。SpringCloud所做的工作就是简化在Spring中配置这些组件的工作，将流行的开源组件封装进SpringCloud。</code></pre><p>   <em>Spring Boot</em></p><p>   SpringBoot是微服务实现中的核心技术。SpringBoot通过简化构建基于REST的微服务的核心任务，大大简化了微服务开发。</p><p>   <em>Spring Cloud Config</em></p><p>Spring Cloud Config通过集中式服务来处理应用程序配置数据的管理，因此应用程序配置数据与部署的微服务完全分离。这确保了无论启动多少个微服务实例，<br>这些微服务实例始终具有相同的配置。</p><p>   <em>Spring Cloud服务发现</em></p><p>Spring Cloud服务发现提供从服务消费者端的逻辑名称到部署服务器的物理位置的映射，它也处理服务注册与注销。Consul和Eureka是常见的服务发现引擎。</p><p>   <em>Spring Cloud Netflix</em></p><p>   Netflix Hystrix作为熔断器，可以快速实现服务客户端弹性模式。Netflix Ribbon为服务消费者提供客户端对服务端的负载均衡。Netflix Zuul可作为代理<br>服务请求的服务网关，为微服务应用程序提供服务路由功能。</p><p>   <em>Spring Cloud Stream</em></p><p>   Spring Cloud Stream可以快速的将微服务与消息代理如：RabbitMQ、Kafka进行整合。</p><p>   <em>Spring Cloud Sleuth</em></p><p>   Spring Cloud Sleuth允许将唯一跟踪标识符集成到应用程序所使用的HTTP调用和消息通道中，这些跟踪ID将自动添加到微服务生成的任何日志记录中。</p><p>   <em>Spring Cloud Security</em></p><p>   Spring Cloud Security是一个基于令牌的验证和授权框架，可以进行验证和授权。另外，它还支持JWT，进行凭证管理和传播。</p><p>   事实上Spring Cloud所提供的工具可远不止于此，更加详细的信息可以参考 <a href="https://spring.io/projects/spring-cloud">Spring Cloud官网</a>   </p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>SpringCloud</tag>
+      
+    </tags>
     
   </entry>
   
