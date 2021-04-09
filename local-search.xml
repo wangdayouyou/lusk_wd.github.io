@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Java中的happens-before概念</title>
+    <link href="/2021/04/09/happens-before/"/>
+    <url>/2021/04/09/happens-before/</url>
+    
+    <content type="html"><![CDATA[<p>最近在重读方腾飞的Java的并发编程的艺术，在第三章讲到happens-before时提及当两个操作之间具有happens-before关系，并不意味着前一个操作必须在后一<br>个操作之前执行！也就是说happens-before要求的是前一个操作的结果要对后一个操作可见，且前一个操作按顺序排在第二个操作之前(the first is visible<br>to and ordered before the second )，关于这段话在JSR-133中的完整表述如下：</p><blockquote><p>Happens-Before Relationship Two actions can be ordered by a happens-before relationship.<br>If one action happens-before another, then the first is visible to and ordered before the second.<br>It should be stressed that a happens-before relationship between two actions does not imply that<br>those actions must occur in that order in a Java platform implementation. The happens-before<br>relation mostly stresses orderings between two actions that conflict with each other, and defines<br>when data races take place.</p></blockquote><p>也就是说happens-before描述的是相关的两个操作要保证逻辑上的顺序，并不一定排斥重排序(指没有数据依赖的情况)。在针对单个处理器执行的指令序列和单个线<br>程中执行的操作，编译器和处理器不会对存在数据依赖的两个操作之间进行重排序，但是在多线程和多处理器的环境下，这种假设就不存在了。</p><p>这里就必须讲到顺序一致性内存模型，它是一个理论模型，在这个模型之中可以保证①一个线程的所有操作必须按照程序的顺序执行。②所有线程都只能看到单一的操作<br>执行顺序。在顺序一致性模型中，每个操作都必须原子执行并立即对所有线程可见。而JMM在具体实现上出于编译器和处理器的优化考虑，并没有采用此模型，而是要求<br>程序员编写正确同步的代码来达到与顺序一致性模型中一样的执行结果。在JMM模型中处于临界区内的代码可以进行重排序。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>JSR-133</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>start my blog</title>
     <link href="/2021/04/03/start-my-blog/"/>
     <url>/2021/04/03/start-my-blog/</url>
@@ -21,7 +40,7 @@
     <link href="/2021/04/03/SpringCloud%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/"/>
     <url>/2021/04/03/SpringCloud%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/</url>
     
-    <content type="html"><![CDATA[<pre><code>完整的微服务包含许多基础设施，就目前来说，它至少应当包含①配置管理、②异步消息处理、③服务的发现和路由、④负载均衡、⑤断路器、⑥CI\CD管道、⑦集群管理、⑧安全模块。SpringCloud所做的工作就是简化在Spring中配置这些组件的工作，将流行的开源组件封装进SpringCloud。</code></pre><p>   <em>Spring Boot</em></p><p>   SpringBoot是微服务实现中的核心技术。SpringBoot通过简化构建基于REST的微服务的核心任务，大大简化了微服务开发。</p><p>   <em>Spring Cloud Config</em></p><p>Spring Cloud Config通过集中式服务来处理应用程序配置数据的管理，因此应用程序配置数据与部署的微服务完全分离。这确保了无论启动多少个微服务实例，<br>这些微服务实例始终具有相同的配置。</p><p>   <em>Spring Cloud服务发现</em></p><p>Spring Cloud服务发现提供从服务消费者端的逻辑名称到部署服务器的物理位置的映射，它也处理服务注册与注销。Consul和Eureka是常见的服务发现引擎。</p><p>   <em>Spring Cloud Netflix</em></p><p>   Netflix Hystrix作为熔断器，可以快速实现服务客户端弹性模式。Netflix Ribbon为服务消费者提供客户端对服务端的负载均衡。Netflix Zuul可作为代理<br>服务请求的服务网关，为微服务应用程序提供服务路由功能。</p><p>   <em>Spring Cloud Stream</em></p><p>   Spring Cloud Stream可以快速的将微服务与消息代理如：RabbitMQ、Kafka进行整合。</p><p>   <em>Spring Cloud Sleuth</em></p><p>   Spring Cloud Sleuth允许将唯一跟踪标识符集成到应用程序所使用的HTTP调用和消息通道中，这些跟踪ID将自动添加到微服务生成的任何日志记录中。</p><p>   <em>Spring Cloud Security</em></p><p>   Spring Cloud Security是一个基于令牌的验证和授权框架，可以进行验证和授权。另外，它还支持JWT，进行凭证管理和传播。</p><p>   事实上Spring Cloud所提供的工具可远不止于此，更加详细的信息可以参考 <a href="https://spring.io/projects/spring-cloud">Spring Cloud官网</a>   </p>]]></content>
+    <content type="html"><![CDATA[<p>   完整的微服务包含许多基础设施，就目前来说，它至少应当包含①配置管理、②异步消息处理、③服务的发现和路由、④负载均衡、⑤断路器、⑥CI\CD管道、⑦<br>   集群管理、⑧安全模块。SpringCloud所做的工作就是简化在Spring中配置这些组件的工作，将流行的开源组件封装进SpringCloud。</p><p>   <em>Spring Boot</em></p><p>   SpringBoot是微服务实现中的核心技术。SpringBoot通过简化构建基于REST的微服务的核心任务，大大简化了微服务开发。</p><p>   <em>Spring Cloud Config</em></p><p>Spring Cloud Config通过集中式服务来处理应用程序配置数据的管理，因此应用程序配置数据与部署的微服务完全分离。这确保了无论启动多少个微服务实例，<br>这些微服务实例始终具有相同的配置。</p><p>   <em>Spring Cloud服务发现</em></p><p>Spring Cloud服务发现提供从服务消费者端的逻辑名称到部署服务器的物理位置的映射，它也处理服务注册与注销。Consul和Eureka是常见的服务发现引擎。</p><p>   <em>Spring Cloud Netflix</em></p><p>   Netflix Hystrix作为熔断器，可以快速实现服务客户端弹性模式。Netflix Ribbon为服务消费者提供客户端对服务端的负载均衡。Netflix Zuul可作为代理<br>服务请求的服务网关，为微服务应用程序提供服务路由功能。</p><p>   <em>Spring Cloud Stream</em></p><p>   Spring Cloud Stream可以快速的将微服务与消息代理如：RabbitMQ、Kafka进行整合。</p><p>   <em>Spring Cloud Sleuth</em></p><p>   Spring Cloud Sleuth允许将唯一跟踪标识符集成到应用程序所使用的HTTP调用和消息通道中，这些跟踪ID将自动添加到微服务生成的任何日志记录中。</p><p>   <em>Spring Cloud Security</em></p><p>   Spring Cloud Security是一个基于令牌的验证和授权框架，可以进行验证和授权。另外，它还支持JWT，进行凭证管理和传播。</p><p>   事实上Spring Cloud所提供的工具可远不止于此，更加详细的信息可以参考 <a href="https://spring.io/projects/spring-cloud">Spring Cloud官网</a>   </p>]]></content>
     
     
     
